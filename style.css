@@ -1,39 +1,57 @@
-body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #2c3e50, #34495e);
-    color: #ecf0f1;
+﻿body {
+    font-family: 'Fredoka', sans-serif;
+    background: linear-gradient(135deg, #8B4513, #A0522D, #D2691E, #8B4513);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    color: #FFD700;
     margin: 0;
-    padding: 0;
+    padding: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    overflow: hidden;
+    min-height: 100vh;
+    overflow-y: auto;
 }
 
 .container {
     text-align: center;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    max-width: 600px;
-    width: 90%;
+    background: linear-gradient(135deg, rgba(139, 69, 19, 0.9), rgba(160, 82, 45, 0.9));
+    border: 4px solid #FFD700;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.6), inset 0 0 20px rgba(255, 215, 0, 0.3);
+    max-width: 700px;
+    width: 95%;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
 }
 
 h1 {
-    font-size: 2.5em;
+    font-size: clamp(1.8em, 5vw, 2.5em);
     margin-bottom: 10px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.5);
     animation: fadeIn 1s ease-in;
+    font-family: '"'"'Fredoka One'"'"', '"'"'Righteous'"'"', sans-serif;
+    color: #FFD700;
+    font-weight: bold;
 }
 
 p {
-    font-size: 1.2em;
-    margin-bottom: 30px;
+    font-size: clamp(1em, 3vw, 1.2em);
+    margin-bottom: 20px;
     animation: fadeIn 1.5s ease-in;
+    font-family: '"'"'Fredoka'"'"', sans-serif;
+    color: #FFFFFF;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: clamp(1.4em, 4vw, 1.8em);
+    margin-bottom: 30px;
+    color: #FFD700;
+    font-family: '"'"'Fredoka One'"'"', '"'"'Righteous'"'"', sans-serif;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
 }
 
 .screen {
@@ -45,10 +63,8 @@ p {
     display: none;
 }
 
-h2 {
-    font-size: 1.8em;
-    margin-bottom: 30px;
-    color: #f39c12;
+.hidden {
+    display: none !important;
 }
 
 .category-buttons {
@@ -59,75 +75,85 @@ h2 {
 }
 
 .category-btn {
-    padding: 30px 20px;
-    border: none;
+    padding: clamp(20px, 4vw, 30px) clamp(15px, 3vw, 20px);
+    border: 3px solid #FFD700;
     border-radius: 15px;
     cursor: pointer;
     transition: all 0.3s ease;
-    min-width: 200px;
+    min-width: 160px;
+    flex: 1 1 auto;
+    max-width: 220px;
     background: rgba(255, 255, 255, 0.1);
-    color: white;
-    font-size: 1em;
+    color: #FFD700;
+    font-size: clamp(0.8em, 2vw, 1em);
     flex-direction: column;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: clamp(5px, 2vw, 10px);
+    font-family: '"'"'Fredoka'"'"', '"'"'Righteous'"'"', sans-serif;
+    font-weight: 700;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
 }
 
 .jokes-btn {
-    background: linear-gradient(135deg, #3498db, #2980b9);
-    border: 2px solid #3498db;
+    background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+    border-color: #FFD700;
 }
 
 .jokes-btn:hover {
-    background: linear-gradient(135deg, #5dade2, #2980b9);
+    background: linear-gradient(135deg, #FF8E8E, #FFA573);
     transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(52, 152, 219, 0.6);
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
 }
 
 .action-btn {
-    background: linear-gradient(135deg, #e74c3c, #c0392b);
-    border: 2px solid #e74c3c;
+    background: linear-gradient(135deg, #E74C3C, #8B0000);
+    border-color: #FFD700;
 }
 
 .action-btn:hover {
-    background: linear-gradient(135deg, #ec7063, #c0392b);
+    background: linear-gradient(135deg, #EC7063, #A00000);
     transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(231, 76, 60, 0.6);
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
 }
 
 .explicit-btn {
     background: linear-gradient(135deg, #8e44ad, #6c3483);
-    border: 2px solid #8e44ad;
+    border-color: #FFD700;
 }
 
 .explicit-btn:hover {
-    background: linear-gradient(135deg, #a569bd, #6c3483);
+    background: linear-gradient(135deg, #a569bd, #7c4597);
     transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(142, 68, 173, 0.6);
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
 }
 
 .category-btn:active {
     transform: scale(0.95);
 }
 
-.category-icon {
-    font-size: 3em;
-}
-
 .category-name {
     font-weight: bold;
-    font-size: 1.3em;
+    font-size: clamp(1em, 3vw, 1.3em);
+    font-family: '"'"'Fredoka One'"'"', '"'"'Righteous'"'"', sans-serif;
+    color: #FFD700;
 }
 
 .category-desc {
-    font-size: 0.9em;
-    opacity: 0.8;
+    font-size: clamp(0.7em, 2vw, 0.9em);
+    opacity: 0.9;
+    line-height: 1.3;
+    font-family: '"'"'Fredoka'"'"', sans-serif;
+    color: #FFFFFF;
 }
 
 #gameScreen {
     position: relative;
     padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    min-height: 60vh;
+    justify-content: space-between;
 }
 
 .game-header {
@@ -137,38 +163,46 @@ h2 {
 
 .back-btn {
     position: static;
-    background: rgba(52, 152, 219, 0.7);
-    color: white;
-    border: none;
+    background: linear-gradient(135deg, #C0504D, #8B0000);
+    color: #FFD700;
+    border: 2px solid #FFD700;
     padding: 10px 15px;
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
     font-size: 0.9em;
+    font-family: '"'"'Fredoka'"'"', '"'"'Righteous'"'"', sans-serif;
+    font-weight: 700;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
 }
 
 .back-btn:hover {
-    background: rgba(52, 152, 219, 1);
+    background: linear-gradient(135deg, #E74C3C, #C0392B);
     transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
 }
 
 .funny-button {
-    background: linear-gradient(45deg, #e74c3c, #c0392b);
-    color: white;
-    border: none;
-    padding: 15px 30px;
-    font-size: 1.2em;
+    background: linear-gradient(45deg, #E74C3C, #8B0000);
+    color: #FFD700;
+    border: 3px solid #FFD700;
+    padding: clamp(12px, 3vw, 15px) clamp(20px, 5vw, 30px);
+    font-size: clamp(0.9em, 2.5vw, 1.2em);
     border-radius: 25px;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.6), 0 0 20px rgba(255, 215, 0, 0.4);
     animation: bounceIn 2s ease-out;
-    margin-top: 20px;
+    margin-top: auto;
+    margin-bottom: auto;
+    line-height: 1.4;
+    font-family: '"'"'Fredoka'"'"', '"'"'Righteous'"'"', sans-serif;
+    font-weight: 700;
 }
 
 .funny-button:hover {
     transform: scale(1.05);
-    box-shadow: 0 6px 20px rgba(231, 76, 60, 0.6);
+    box-shadow: 0 6px 20px rgba(231, 76, 60, 0.8), 0 0 30px rgba(255, 215, 0, 0.8);
 }
 
 .funny-button:active {
@@ -184,67 +218,72 @@ h2 {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.85);
     justify-content: center;
     align-items: center;
     animation: fadeIn 0.5s ease;
 }
 
 .modal-content {
-    background: linear-gradient(135deg, #34495e, #2c3e50);
-    padding: 30px;
-    border-radius: 15px;
-    width: 80%;
-    max-width: 500px;
+    background: linear-gradient(135deg, rgba(139, 69, 19, 0.95), rgba(160, 82, 45, 0.95));
+    border: 4px solid #FFD700;
+    padding: clamp(20px, 5vw, 30px);
+    border-radius: 20px;
+    width: 85%;
+    max-width: 550px;
+    max-height: 85vh;
     text-align: center;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.9), 0 0 20px rgba(255, 215, 0, 0.6);
     position: relative;
     animation: slideIn 0.5s ease;
-}
-
-.close {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    color: #ecf0f1;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.close:hover {
-    color: #e74c3c;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
 }
 
 #contentText {
- 
+    font-size: clamp(1.1em, 3vw, 1.4em);
+    margin-bottom: 30px;
+    line-height: 1.6;
+    animation: fadeIn 0.5s ease 0.2s both;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: '"'"'Fredoka'"'"', '"'"'Righteous'"'"', sans-serif;
+    font-weight: 700;
+    color: #FFFFFF;
+}
 
 #promptText {
     font-size: 1.4em;
     margin-bottom: 20px;
     line-height: 1.5;
     animation: fadeIn 0.5s ease both;
-    color: #ecf0f1;
-}   font-size: 1.4em;
-    margin-bottom: 20px;
-    line-height: 1.5;
-    animation: fadeIn 0.5s ease 0.2s both;
+    color: #FFD700;
+    font-family: '"'"'Fredoka One'"'"', '"'"'Righteous'"'"', sans-serif;
+    font-weight: bold;
+}
+
+.action-reaction-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: clamp(10px, 2vw, 15px);
+    margin-bottom: 15px;
 }
 
 .reaction-btn {
-    margin: 10px;
-    padding: 12px 20px;
-    font-size: 1em;
-    border: none;
+    margin: clamp(8px, 2vw, 10px);
+    padding: clamp(10px, 2vw, 12px) clamp(15px, 3vw, 20px);
+    font-size: clamp(0.9em, 2vw, 1em);
+    border: 2px solid white;
     border-radius: 10px;
     cursor: pointer;
     transition: all 0.3s ease;
-}
-
-.reaction-btn:active {
-    transform: scale(0.95);
-    animation: pulse 0.3s ease;
+    line-height: 1.3;
+    font-family: '"'"'Fredoka'"'"', '"'"'Righteous'"'"', sans-serif;
+    font-weight: 700;
 }
 
 .laugh {
@@ -255,93 +294,316 @@ h2 {
 .laugh:hover {
     background: linear-gradient(45deg, #229954, #27ae60);
     transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(46, 204, 113, 0.8);
 }
 
 .not-funny {
-    background: linear-gradient(45deg, #e67e22, #f39c12);
-    color: white;
+    background: linear-gradient(45deg, #E74C3C, #C0392B);
+    color: #FFD700;
 }
 
 .not-funny:hover {
-    background: linear-gradient(45deg, #d35400, #e67e22);
+    background: linear-gradient(45deg, #D35400, #E74C3C);
     transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
 }
 
 .new-joke-btn {
-    background: linear-gradient(45deg, #3498db, #2980b9);
+    background: linear-gradient(45deg, #27AE60, #2ECC71);
     color: white;
-    border: none;
-    padding: 12px 25px;
-    font-size: 1.1em;
+    border: 2px solid #FFD700;
+    padding: clamp(10px, 2vw, 12px) clamp(18px, 3vw, 25px);
+    font-size: clamp(0.95em, 2vw, 1.1em);
     border-radius: 10px;
     cursor: pointer;
     transition: all 0.3s ease;
     margin-top: 20px;
+    line-height: 1.3;
+    font-family: '"'"'Fredoka'"'"', '"'"'Righteous'"'"', sans-serif;
+    font-weight: 700;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
 }
 
 .new-joke-btn:hover {
-    background: linear-gradient(45deg, #2980b9, #21618c);
+    background: linear-gradient(45deg, #1E8449, #27AE60);
     transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
 }
 
-.new-joke-btn:active {
-    transform: scale(0.95);
-    animation: pulse 0.3s ease;
+.button-group {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
 }
 
-.hidden {
-    display: none;
+.drinking-popup {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 4em;
+    z-index: 2;
+    pointer-events: none;
+    user-select: none;
+    animation: drinkPop 0.6s ease-out, drinkFade 1.5s ease-out 0.3s forwards;
 }
 
-/* Keyframe animations */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+.drinking-popup-message {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(1.2em, 3vw, 1.8em);
+    color: #FFD700;
+    z-index: 2;
+    pointer-events: none;
+    user-select: none;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    text-align: center;
+    font-family: '"'"'Fredoka One'"'"', '"'"'Righteous'"'"', sans-serif;
+    font-weight: bold;
+    animation: fadeIn 0.5s ease, fadeOut 0.5s ease 1.5s forwards;
+}
+
+.confetti {
+    position: fixed;
+    pointer-events: none;
+    animation: fall linear forwards;
 }
 
 @keyframes slideIn {
-    from { transform: translateY(-50px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
 }
 
 @keyframes bounceIn {
-    0% { transform: scale(0.3); opacity: 0; }
-    50% { transform: scale(1.05); }
-    70% { transform: scale(0.9); }
-    100% { transform: scale(1); opacity: 1; }
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
 }
 
-/* Confetti styles */
-.confetti {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background-color: #f39c12;
-    pointer-events: none;
-    animation: fall 3s linear infinite;
+@keyframes drinkPop {
+    0% {
+        transform: translate(-50%, -50%) scale(0.2) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1) rotate(10deg);
+        opacity: 1;
+    }
 }
 
-.confetti:nth-child(odd) {
-    background-color: #e74c3c;
-}
-
-.confetti:nth-child(3n) {
-    background-color: #27ae60;
-}
-
-.confetti:nth-child(5n) {
-    background-color: #3498db;
+@keyframes drinkFade {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
 }
 
 @keyframes fall {
     to {
-        transform: translateY(100vh) rotate(720deg);
+        transform: translateY(100vh) rotate(360deg);
         opacity: 0;
+    }
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+        border-radius: 15px;
+    }
+
+    h1 {
+        margin-bottom: 8px;
+    }
+
+    h2 {
+        margin-bottom: 20px;
+    }
+
+    .category-buttons {
+        gap: 15px;
+    }
+
+    .category-btn {
+        min-width: 140px;
+        max-width: 180px;
+        padding: clamp(15px, 3vw, 25px) clamp(10px, 2vw, 15px);
+    }
+
+    .modal-content {
+        width: 90%;
+        max-width: 500px;
+        padding: clamp(15px, 4vw, 25px);
+    }
+
+    .reaction-btn {
+        padding: clamp(8px, 1.5vw, 10px) clamp(12px, 2vw, 18px);
+        font-size: clamp(0.8em, 1.8vw, 0.95em);
+    }
+
+    .funny-button {
+        padding: clamp(10px, 2.5vw, 13px) clamp(18px, 4vw, 28px);
+        font-size: clamp(0.85em, 2.2vw, 1.1em);
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 5px;
+    }
+
+    .container {
+        padding: 12px;
+        border-width: 3px;
+        border-radius: 12px;
+        max-width: 100%;
+    }
+
+    h1 {
+        font-size: clamp(1.4em, 4vw, 2em);
+        margin-bottom: 6px;
+    }
+
+    h2 {
+        font-size: clamp(1.1em, 3.5vw, 1.5em);
+        margin-bottom: 15px;
+    }
+
+    p {
+        font-size: clamp(0.85em, 2.5vw, 1em);
+        margin-bottom: 15px;
+    }
+
+    .category-buttons {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .category-btn {
+        width: 100%;
+        max-width: none;
+        min-width: auto;
+        padding: clamp(12px, 2.5vw, 18px) clamp(8px, 2vw, 12px);
+        font-size: clamp(0.75em, 1.8vw, 0.95em);
+    }
+
+    .category-name {
+        font-size: clamp(0.9em, 2.5vw, 1.1em);
+    }
+
+    .category-desc {
+        font-size: clamp(0.65em, 1.8vw, 0.85em);
+    }
+
+    .modal-content {
+        width: 95%;
+        max-width: 100%;
+        max-height: 80vh;
+        padding: clamp(12px, 3vw, 20px);
+        border-width: 3px;
+        border-radius: 12px;
+    }
+
+    #contentText {
+        font-size: clamp(0.95em, 2.5vw, 1.2em);
+        margin-bottom: 20px;
+    }
+
+    #promptText {
+        font-size: clamp(1.1em, 2.8vw, 1.4em);
+        margin-bottom: 15px;
+    }
+
+    .action-reaction-buttons {
+        flex-direction: column;
+        gap: clamp(8px, 2vw, 12px);
+    }
+
+    .reaction-btn {
+        width: 100%;
+        margin: 0;
+        padding: clamp(8px, 2vw, 10px) clamp(12px, 3vw, 15px);
+        font-size: clamp(0.75em, 2vw, 0.9em);
+    }
+
+    .funny-button {
+        width: auto;
+        padding: clamp(8px, 2vw, 10px) clamp(15px, 3.5vw, 25px);
+        font-size: clamp(0.8em, 2vw, 1em);
+    }
+
+    .new-joke-btn {
+        width: 100%;
+        padding: clamp(8px, 2vw, 10px) clamp(12px, 3vw, 15px);
+        font-size: clamp(0.85em, 2vw, 1em);
+        margin-top: 15px;
+    }
+
+    .drinking-popup {
+        font-size: clamp(2em, 8vw, 4em);
+    }
+
+    .drinking-popup-message {
+        font-size: clamp(1em, 2.5vw, 1.5em);
     }
 }
