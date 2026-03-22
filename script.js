@@ -1,7 +1,8 @@
 // Data storage
 let jokesData = {
     jokes: [],
-    actionCards: []
+    actionCards: [],
+    explicit18PlusJokes: []
 };
 let currentCategory = null;
 
@@ -10,6 +11,7 @@ const categoryScreen = document.getElementById('categoryScreen');
 const gameScreen = document.getElementById('gameScreen');
 const jokesCategory = document.getElementById('jokesCategory');
 const actionCategory = document.getElementById('actionCategory');
+const explicit18Category = document.getElementById('explicit18Category');
 const backButton = document.getElementById('backButton');
 const contentButton = document.getElementById('contentButton');
 const contentModal = document.getElementById('contentModal');
@@ -30,9 +32,14 @@ const container = document.querySelector('.container');
 async function loadJokes() {
     try {
         const response = await fetch('jokes.json');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
         jokesData = await response.json();
+        console.log('Jokes loaded successfully:', jokesData);
     } catch (error) {
         console.error('Error loading jokes:', error);
+        alert('Error loading jokes. Please refresh the page.');
     }
 }
 
@@ -75,6 +82,12 @@ actionCategory.addEventListener('click', () => {
     gameScreen.classList.remove('hidden');
 });
 
+explicit18Category.addEventListener('click', () => {
+    currentCategory = 'explicit18PlusJokes';
+    categoryScreen.classList.add('hidden');
+    gameScreen.classList.remove('hidden');
+});
+
 // Back to categories
 backButton.addEventListener('click', () => {
     categoryScreen.classList.remove('hidden');
@@ -86,16 +99,29 @@ backButton.addEventListener('click', () => {
 
 // Show content modal
 contentButton.addEventListener('click', () => {
-    if (currentCategory === 'jokes') {
-        contentText.textContent = getRandomItem(jokesData.jokes);
+    let content = null;
+    
+    if (currentCategory === 'jokes' && jokesData.jokes.length > 0) {
+        content = getRandomItem(jokesData.jokes);
         reactionButtons.classList.remove('hidden');
         actionReactionButtons.classList.add('hidden');
-    } else if (currentCategory === 'actionCards') {
-        contentText.textContent = getRandomItem(jokesData.actionCards);
+    } else if (currentCategory === 'actionCards' && jokesData.actionCards.length > 0) {
+        content = getRandomItem(jokesData.actionCards);
         actionReactionButtons.classList.remove('hidden');
         reactionButtons.classList.add('hidden');
+    } else if (currentCategory === 'explicit18PlusJokes' && jokesData.explicit18PlusJokes.length > 0) {
+        content = getRandomItem(jokesData.explicit18PlusJokes);
+        reactionButtons.classList.remove('hidden');
+        actionReactionButtons.classList.add('hidden');
     }
-    contentModal.style.display = 'flex';
+    
+    if (content) {
+        contentText.textContent = content;
+        contentModal.style.display = 'flex';
+    } else {
+        alert('No content loaded. Please refresh the page.');
+        console.error('Content not available. Current category:', currentCategory, 'Data:', jokesData);
+    }
 });
 
 // Close modal
@@ -139,6 +165,10 @@ newContentButton.addEventListener('click', () => {
     promptModal.style.display = 'none';
     if (currentCategory === 'jokes') {
         contentText.textContent = getRandomItem(jokesData.jokes);
+        reactionButtons.classList.remove('hidden');
+        actionReactionButtons.classList.add('hidden');
+    } else if (currentCategory === 'explicit18PlusJokes') {
+        contentText.textContent = getRandomItem(jokesData.explicit18PlusJokes);
         reactionButtons.classList.remove('hidden');
         actionReactionButtons.classList.add('hidden');
     } else if (currentCategory === 'actionCards') {
