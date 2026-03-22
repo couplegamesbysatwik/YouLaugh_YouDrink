@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Couple Drinking Game</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Fredoka:wght@400;700&family=Pacifico&family=Righteous&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -17,35 +18,40 @@
             <div class="category-buttons">
                 <button id="jokesCategory" class="category-btn jokes-btn">
                     <div class="category-icon">😂</div>
-                    <div class="category-name">Comedy Gold</div>
-                    <div class="category-desc">Get laughs from hilarious jokes!</div>
+                    <div class="category-name">Laugh Till You Cry</div>
+                    <div class="category-desc">Warning: May cause uncontrollable laughter & drinking!</div>
                 </button>
                 <button id="actionCategory" class="category-btn action-btn">
                     <div class="category-icon">🎯</div>
-                    <div class="category-name">Dare Mode</div>
-                    <div class="category-desc">Fun tasks to make each other laugh!</div>
+                    <div class="category-name">Challenge Accepted 🎯</div>
+                    <div class="category-desc">Do something ridiculously embarrassing together!</div>
+                </button>
+                <button id="explicit18Category" class="category-btn explicit-btn">
+                    <div class="category-icon">🔞</div>
+                    <div class="category-name">Spicy Stash 🔞</div>
+                    <div class="category-desc">Not for the faint-hearted or sober! PS: Your grandmother should NOT be watching!</div>
                 </button>
             </div>
         </div>
         
         <!-- Game Screen (hidden initially) -->
         <div id="gameScreen" class="screen hidden">
-            <button id="backButton" class="back-btn">← Back to Categories</button>
-            <button id="contentButton" class="funny-button">Click me if you dare! (But beware, you might laugh and have to drink!)</button>
+            <div class="game-header">
+                <button id="backButton" class="back-btn hidden">🔙 Nope, Wrong Category!</button>
+            </div>
+            <button id="contentButton" class="funny-button">SPIN THE WHEEL OF CHAOS! ⚡ (Spoiler: You'll probably drink)</button>
         </div>
         
         <!-- Modal for content -->
         <div id="contentModal" class="modal">
             <div class="modal-content">
-                <span class="close">&times;</span>
                 <p id="contentText"></p>
                 <div id="reactionButtons" class="hidden">
-                    <button id="laughedButton" class="reaction-btn laugh">Hahaha, this was so funny, I laughed my ass off!</button>
-                    <button id="notFunnyButton" class="reaction-btn not-funny">I'm not drunk enough to laugh at something like this</button>
+                    <button id="laughedButton" class="reaction-btn laugh">Laughed!</button>
+                    <button id="notFunnyButton" class="reaction-btn not-funny">Nope. Bring the Heavy Artillery! 🔫</button>
                 </div>
                 <div id="actionReactionButtons" class="hidden">
-                    <button id="actionDoneButton" class="reaction-btn laugh">Done! That was hilarious!</button>
-                    <button id="actionSkipButton" class="reaction-btn not-funny">Skip this one, too tame!</button>
+                    <button id="actionSkipButton" class="reaction-btn not-funny">Skip This One</button>
                 </div>
             </div>
         </div>
@@ -54,7 +60,7 @@
         <div id="promptModal" class="modal">
             <div class="modal-content">
                 <p id="promptText"></p>
-                <button id="newContentButton" class="new-joke-btn">Try Another</button>
+                <button id="newContentButton" class="new-joke-btn">Bring It On!</button>
             </div>
         </div>
     </div>
