@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Couple Drinking Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🍺 Couple Drinking Game 🍺</h1>
+        <p>Get ready to laugh and drink with your partner!</p>
+        
+        <!-- Category Selection Screen -->
+        <div id="categoryScreen" class="screen">
+            <h2>Pick Your Poison!</h2>
+            <div class="category-buttons">
+                <button id="jokesCategory" class="category-btn jokes-btn">
+                    <div class="category-icon">😂</div>
+                    <div class="category-name">Comedy Gold</div>
+                    <div class="category-desc">Get laughs from hilarious jokes!</div>
+                </button>
+                <button id="actionCategory" class="category-btn action-btn">
+                    <div class="category-icon">🎯</div>
+                    <div class="category-name">Dare Mode</div>
+                    <div class="category-desc">Fun tasks to make each other laugh!</div>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Game Screen (hidden initially) -->
+        <div id="gameScreen" class="screen hidden">
+            <button id="backButton" class="back-btn">← Back to Categories</button>
+            <button id="contentButton" class="funny-button">Click me if you dare! (But beware, you might laugh and have to drink!)</button>
+        </div>
+        
+        <!-- Modal for content -->
+        <div id="contentModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p id="contentText"></p>
+                <div id="reactionButtons" class="hidden">
+                    <button id="laughedButton" class="reaction-btn laugh">Hahaha, this was so funny, I laughed my ass off!</button>
+                    <button id="notFunnyButton" class="reaction-btn not-funny">I'm not drunk enough to laugh at something like this</button>
+                </div>
+                <div id="actionReactionButtons" class="hidden">
+                    <button id="actionDoneButton" class="reaction-btn laugh">Done! That was hilarious!</button>
+                    <button id="actionSkipButton" class="reaction-btn not-funny">Skip this one, too tame!</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal for prompt -->
+        <div id="promptModal" class="modal">
+            <div class="modal-content">
+                <p id="promptText"></p>
+                <button id="newContentButton" class="new-joke-btn">Try Another</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
