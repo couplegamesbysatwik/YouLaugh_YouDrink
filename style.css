@@ -17,13 +17,16 @@
     text-align: center;
     background: linear-gradient(135deg, rgba(139, 69, 19, 0.9), rgba(160, 82, 45, 0.9));
     border: 4px solid #FFD700;
-    padding: 20px;
+    padding: clamp(20px, 3vw, 30px);
     border-radius: 20px;
     box-shadow: 0 0 40px rgba(255, 215, 0, 0.6), inset 0 0 20px rgba(255, 215, 0, 0.3);
-    max-width: 700px;
+    max-width: 90vw;
     width: 95%;
     position: relative;
     overflow: visible;
+    display: flex;
+    flex-direction: column;
+    min-height: 85vh;
 }
 
 h1 {
@@ -69,27 +72,30 @@ h2 {
 
 .category-buttons {
     display: flex;
-    gap: 20px;
+    gap: clamp(15px, 3vw, 30px);
     justify-content: center;
     flex-wrap: wrap;
+    flex: 1;
+    align-items: center;
+    padding: clamp(20px, 3vw, 40px) 0;
 }
 
 .category-btn {
-    padding: clamp(20px, 4vw, 30px) clamp(15px, 3vw, 20px);
+    padding: clamp(25px, 5vw, 40px) clamp(20px, 4vw, 30px);
     border: 3px solid #FFD700;
     border-radius: 15px;
     cursor: pointer;
     transition: all 0.3s ease;
-    min-width: 160px;
+    min-width: 180px;
     flex: 1 1 auto;
-    max-width: 220px;
+    max-width: 280px;
     background: rgba(255, 255, 255, 0.1);
     color: #FFD700;
-    font-size: clamp(0.8em, 2vw, 1em);
+    font-size: clamp(0.85em, 2.2vw, 1.1em);
     flex-direction: column;
     display: flex;
     align-items: center;
-    gap: clamp(5px, 2vw, 10px);
+    gap: clamp(8px, 2vw, 15px);
     font-family: '"'"'Fredoka'"'"', '"'"'Righteous'"'"', sans-serif;
     font-weight: 700;
     box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
@@ -236,7 +242,38 @@ h2 {
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.9), 0 0 20px rgba(255, 215, 0, 0.6);
     position: relative;
     animation: slideIn 0.5s ease;
-    overflow-y: auto;
+ 
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: linear-gradient(135deg, #E74C3C, #C0392B);
+    color: #FFD700;
+    border: 2px solid #FFD700;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 28px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+}
+
+.close-btn:hover {
+    background: linear-gradient(135deg, #C0392B, #A93226);
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+}
+
+.close-btn:active {
+    transform: scale(0.95);
+}   overflow-y: auto;
     display: flex;
     flex-direction: column;
 }
@@ -343,11 +380,64 @@ h2 {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    font-size: 4em;
     z-index: 2;
     pointer-events: none;
     user-select: none;
-    animation: drinkPop 0.6s ease-out, drinkFade 1.5s ease-out 0.3s forwards;
+    animation: drinkPop 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow: auto;
+}
+
+.drinking-popup-content {
+    background: linear-gradient(135deg, #E74C3C, #C0392B);
+    padding: clamp(20px, 5vw, 40px) clamp(30px, 8vw, 60px);
+    border-radius: 20px;
+    font-size: clamp(1em, 2.5vw, 1.5em);
+    color: #000000;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(255, 215, 0, 0.8);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.8), 0 0 15px rgba(255, 215, 0, 0.6);
+    border: 3px solid #FFD700;
+    font-family: 'Fredoka One', 'Righteous', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(10px, 2vw, 20px);
+    pointer-events: auto;
+    min-width: auto;
+}
+
+.popup-message {
+    font-size: clamp(1.1em, 2.8vw, 1.4em);
+    animation: fadeIn 0.5s ease-out;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.popup-button {
+    background: linear-gradient(45deg, #27AE60, #2ECC71);
+    color: white;
+    border: 2px solid #FFD700;
+    padding: clamp(10px, 2vw, 15px) clamp(20px, 4vw, 35px);
+    font-size: clamp(0.9em, 2vw, 1.1em);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Fredoka', 'Righteous', sans-serif;
+    font-weight: 700;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+    animation: slideUp 0.6s ease-out 0.3s both;
+}
+
+.popup-button:hover {
+    background: linear-gradient(45deg, #1E8449, #27AE60);
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+}
+
+.popup-button:active {
+    transform: scale(0.95);
 }
 
 .drinking-popup-message {
@@ -427,11 +517,26 @@ h2 {
 
 @keyframes drinkPop {
     0% {
-        transform: translate(-50%, -50%) scale(0.2) rotate(0deg);
+        transform: translate(-50%, -50%) scale(0) rotate(-15deg);
+        opacity: 0;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.1) rotate(5deg);
         opacity: 1;
     }
     100% {
-        transform: translate(-50%, -50%) scale(1) rotate(10deg);
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    0% {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
         opacity: 1;
     }
 }
@@ -439,11 +544,11 @@ h2 {
 @keyframes drinkFade {
     0% {
         opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
     }
     100% {
         opacity: 0;
-        transform: translate(-50%, -50%) scale(0.5);
+        transform: translate(-50%, -50%) scale(0.8) rotate(-5deg);
     }
 }
 

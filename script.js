@@ -22,8 +22,11 @@ const reactionButtons = document.getElementById('reactionButtons');
 const actionReactionButtons = document.getElementById('actionReactionButtons');
 const laughedButton = document.getElementById('laughedButton');
 const notFunnyButton = document.getElementById('notFunnyButton');
+const actionLaughedButton = document.getElementById('actionLaughedButton');
+const actionNotFunnyButton = document.getElementById('actionNotFunnyButton');
 const actionSkipButton = document.getElementById('actionSkipButton');
 const newContentButton = document.getElementById('newContentButton');
+const closeButton = document.getElementById('closeButton');
 const container = document.querySelector('.container');
 
 // Function to get random item from array
@@ -73,15 +76,52 @@ function createConfetti() {
 function createDrinkingAnimationPopup(message) {
     const popup = document.createElement('div');
     popup.classList.add('drinking-popup');
-    popup.innerHTML = `<div class="drinking-popup-content">🍻 ${message} 🍻</div>`;
+    popup.innerHTML = `
+        <div class="drinking-popup-content">
+            <div class="popup-message">🍻 ${message} 🍻</div>
+            <button class="popup-button">Bring It On! 💪</button>
+        </div>
+    `;
     document.body.appendChild(popup);
     
-    setTimeout(() => {
-        popup.style.animation = 'drinkFade 0.8s ease-out forwards';
+    // Add click handler to the button
+    const popupButton = popup.querySelector('.popup-button');
+    popupButton.addEventListener('click', () => {
+        popup.style.animation = 'drinkFade 0.6s ease-out forwards';
         setTimeout(() => {
             popup.remove();
-        }, 800);
-    }, 600);
+            // Show next content
+            showNextContent();
+        }, 600);
+    });
+    
+    // Auto-remove after 8 seconds if not clicked
+    setTimeout(() => {
+        if (popup.parentNode) {
+            popup.style.animation = 'drinkFade 0.6s ease-out forwards';
+            setTimeout(() => {
+                if (popup.parentNode) popup.remove();
+            }, 600);
+        }
+    }, 8000);
+}
+
+function showNextContent() {
+    promptModal.style.display = 'none';
+    if (currentCategory === 'jokes') {
+        contentText.textContent = getRandomItem(jokesData.jokes);
+        reactionButtons.classList.remove('hidden');
+        actionReactionButtons.classList.add('hidden');
+    } else if (currentCategory === 'explicit18PlusJokes') {
+        contentText.textContent = getRandomItem(jokesData.explicit18PlusJokes);
+        reactionButtons.classList.remove('hidden');
+        actionReactionButtons.classList.add('hidden');
+    } else if (currentCategory === 'actionCards') {
+        contentText.textContent = getRandomItem(jokesData.actionCards);
+        actionReactionButtons.classList.remove('hidden');
+        reactionButtons.classList.add('hidden');
+    }
+    contentModal.style.display = 'flex';
 }
 
 // Category selection
@@ -148,45 +188,41 @@ laughedButton.addEventListener('click', () => {
     const drinkingMessage = getRandomItem(laughedMessages);
     createDrinkingAnimationPopup(drinkingMessage);
     createConfetti();
-    setTimeout(() => {
-        contentModal.style.display = 'none';
-        promptText.textContent = drinkingMessage;
-        promptModal.style.display = 'flex';
-    }, 800);
+    contentModal.style.display = 'none';
 });
 
 // Jokes - if not funny
 notFunnyButton.addEventListener('click', () => {
-    promptText.textContent = "Okay, let me try another one which is funny but looks like your humour is broken AF";
+    const message = "Okay, let me try another one which is funny but looks like your humour is broken AF";
+    createDrinkingAnimationPopup(message);
     contentModal.style.display = 'none';
-    promptModal.style.display = 'flex';
+});
+
+// Action Cards - if laughed
+actionLaughedButton.addEventListener('click', () => {
+    const drinkingMessage = getRandomItem(laughedMessages);
+    createDrinkingAnimationPopup(drinkingMessage);
+    createConfetti();
+    contentModal.style.display = 'none';
+});
+
+// Action Cards - if not funny
+actionNotFunnyButton.addEventListener('click', () => {
+    const message = "Alright, let's find a challenge that actually gets you two going!";
+    createDrinkingAnimationPopup(message);
+    contentModal.style.display = 'none';
 });
 
 // Action Cards - if skip
 actionSkipButton.addEventListener('click', () => {
-    promptText.textContent = getRandomItem(skippedMessages);
+    const message = getRandomItem(skippedMessages);
+    createDrinkingAnimationPopup(message);
     contentModal.style.display = 'none';
-    promptModal.style.display = 'flex';
 });
 
-// New content
-newContentButton.addEventListener('click', () => {
-    promptModal.style.display = 'none';
-    promptText.textContent = getRandomItem(nextMessages);
-    if (currentCategory === 'jokes') {
-        contentText.textContent = getRandomItem(jokesData.jokes);
-        reactionButtons.classList.remove('hidden');
-        actionReactionButtons.classList.add('hidden');
-    } else if (currentCategory === 'explicit18PlusJokes') {
-        contentText.textContent = getRandomItem(jokesData.explicit18PlusJokes);
-        reactionButtons.classList.remove('hidden');
-        actionReactionButtons.classList.add('hidden');
-    } else if (currentCategory === 'actionCards') {
-        contentText.textContent = getRandomItem(jokesData.actionCards);
-        actionReactionButtons.classList.remove('hidden');
-        reactionButtons.classList.add('hidden');
-    }
-    contentModal.style.display = 'flex';
+// Close button functionality
+closeButton.addEventListener('click', () => {
+    contentModal.style.display = 'none';
 });
 
 // Close modals when clicking outside
